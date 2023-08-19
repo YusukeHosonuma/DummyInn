@@ -5,11 +5,11 @@
 //  Created by Yusuke Hosonuma on 2023/08/16.
 //
 
-import Foundation
-import UniformTypeIdentifiers
-import SwiftUI
 import Algorithms
+import Foundation
 import OSLog
+import SwiftUI
+import UniformTypeIdentifiers
 
 private let loggerFile: Logger = .file
 
@@ -37,7 +37,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .onChange(of: selectedSize, initial: true) { oldValue, newValue in
+            .onChange(of: selectedSize, initial: true) { _, newValue in
                 width = newValue
                 height = newValue
             }
