@@ -25,7 +25,6 @@ struct AboutView: View {
             Text("Version \(Bundle.main.version) (\(Bundle.main.buildVersion))")
                 .textSelection(.enabled)
 
-
             Link(repositoryURL.absoluteString, destination: repositoryURL)
 
             Text(Bundle.main.copyright)

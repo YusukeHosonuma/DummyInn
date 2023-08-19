@@ -10,7 +10,7 @@ import OSLog
 extension Logger {
     static let file: Self = .init(category: "file")
 
-    init<T>(type: T.Type) {
+    init(type: (some Any).Type) {
         let typeName = String(describing: type)
         self.init(subsystem: Self.subsystem, category: typeName)
     }
