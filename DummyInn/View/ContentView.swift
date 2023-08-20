@@ -6,6 +6,7 @@
 //
 
 import Algorithms
+import Defaults
 import Foundation
 import OSLog
 import SwiftUI
@@ -14,13 +15,14 @@ import UniformTypeIdentifiers
 private let loggerFile: Logger = .file
 
 struct ContentView: View {
+    @Default(.sizePresets) private var sizePresets
     @Environment(\.openWindow) private var openWindow
 
     @AppStorage("isPresentedPopover") private var isPresentedPopover: Bool = true
 
     @State private var width: Int = 200
     @State private var height: Int = 200
-    @State private var selectedSize: Int = 200
+    @State private var selectedSize: GenerateSize = .init(width: 200, height: 200) // 対応する値が無い場合がある（いつか直すかも）
     @State private var selectedColor: ThemeColor = presetColors[0]
 
     var body: some View {
@@ -31,15 +33,15 @@ struct ContentView: View {
                 TextField("Height:", value: $height, format: .number)
 
                 Picker("Presets:", selection: $selectedSize) {
-                    ForEach(presetSizes, id: \.self) { size in
-                        Text("\(size) x \(size)")
+                    ForEach(sizePresets, id: \.self) { size in
+                        Text("\(size.width) x \(size.height)")
                             .tag(size)
                     }
                 }
             }
             .onChange(of: selectedSize, initial: true) { _, newValue in
-                width = newValue
-                height = newValue
+                width = newValue.width
+                height = newValue.height
             }
 
             // プレビュー
@@ -48,7 +50,6 @@ struct ContentView: View {
                     Text("ドラッグ＆ドロップで保存できます")
                         .padding()
                 }
-
                 .onDrag {
                     // ref: https://stackoverflow.com/a/75425040
 
@@ -110,6 +111,13 @@ struct ContentView: View {
                     Button("About") {
                         openWindow(id: "about")
                     }
+                    SettingsLink {
+                        Text("Settings...")
+                    }
+
+                    // --------
+                    Divider()
+
                     Button("Quit") {
                         NSApplication.shared.terminate(nil)
                     }

@@ -23,5 +23,11 @@ struct DummyInnApp: App {
                 .frame(width: 280, height: 190)
         }
         .windowResizability(.contentSize)
+
+        Settings {
+            SettingsView()
+                .frame(minWidth: 300, minHeight: 200)
+        }
+        .windowResizability(.contentMinSize)
     }
 }
