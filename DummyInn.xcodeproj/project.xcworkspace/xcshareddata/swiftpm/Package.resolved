@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "defaults",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/Defaults",
+      "state" : {
+        "revision" : "0f5a23fcbd83eb72f6d405aa85bbfacaffb99b03",
+        "version" : "7.2.0"
+      }
+    },
+    {
       "identity" : "swift-algorithms",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-algorithms.git",

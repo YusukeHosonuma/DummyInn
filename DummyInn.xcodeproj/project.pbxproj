@@ -17,6 +17,12 @@
 		708B28142A9053F200B283D8 /* NSImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708B28092A90537500B283D8 /* NSImage+.swift */; };
 		708B28172A90541500B283D8 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 708B28162A90541500B283D8 /* Algorithms */; };
 		708B281A2A9055E100B283D8 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708B28192A9055E100B283D8 /* Bundle+.swift */; };
+		70A09D0B2A9196D90078C908 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A09D0A2A9196D90078C908 /* SettingsView.swift */; };
+		70A09D0E2A91AAEE0078C908 /* SettingsAddSizeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A09D0D2A91AAEE0078C908 /* SettingsAddSizeSheet.swift */; };
+		70A09D102A91B3FD0078C908 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A09D0F2A91B3FD0078C908 /* Array+.swift */; };
+		70BCD5BE2A921B41006A2068 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 70BCD5BD2A921B41006A2068 /* Defaults */; };
+		70BCD5C02A921B74006A2068 /* Defaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BCD5BF2A921B74006A2068 /* Defaults+.swift */; };
+		70BCD5C32A921E30006A2068 /* GenerateSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BCD5C22A921E30006A2068 /* GenerateSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,11 @@
 		708B280E2A9053C400B283D8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		708B28182A9054D300B283D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		708B28192A9055E100B283D8 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
+		70A09D0A2A9196D90078C908 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		70A09D0D2A91AAEE0078C908 /* SettingsAddSizeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAddSizeSheet.swift; sourceTree = "<group>"; };
+		70A09D0F2A91B3FD0078C908 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
+		70BCD5BF2A921B74006A2068 /* Defaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+.swift"; sourceTree = "<group>"; };
+		70BCD5C22A921E30006A2068 /* GenerateSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70BCD5BE2A921B41006A2068 /* Defaults in Frameworks */,
 				708B28172A90541500B283D8 /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				708B280B2A90538A00B283D8 /* View */,
+				70BCD5C12A921E1A006A2068 /* Entity */,
 				708B28082A90536D00B283D8 /* Extension */,
 				708B28102A9053CB00B283D8 /* Util */,
 				708B27FF2A90535900B283D8 /* Preview Content */,
@@ -91,6 +104,7 @@
 				708B280A2A90537500B283D8 /* Logger+.swift */,
 				708B28092A90537500B283D8 /* NSImage+.swift */,
 				708B28192A9055E100B283D8 /* Bundle+.swift */,
+				70A09D0F2A91B3FD0078C908 /* Array+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -98,6 +112,7 @@
 		708B280B2A90538A00B283D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				70A09D0C2A91AAC50078C908 /* Settings */,
 				708B280C2A9053B300B283D8 /* ContentView.swift */,
 				708B280D2A9053B700B283D8 /* AboutView.swift */,
 			);
@@ -108,8 +123,26 @@
 			isa = PBXGroup;
 			children = (
 				708B280E2A9053C400B283D8 /* Constants.swift */,
+				70BCD5BF2A921B74006A2068 /* Defaults+.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		70A09D0C2A91AAC50078C908 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				70A09D0A2A9196D90078C908 /* SettingsView.swift */,
+				70A09D0D2A91AAEE0078C908 /* SettingsAddSizeSheet.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		70BCD5C12A921E1A006A2068 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				70BCD5C22A921E30006A2068 /* GenerateSize.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +163,7 @@
 			name = DummyInn;
 			packageProductDependencies = (
 				708B28162A90541500B283D8 /* Algorithms */,
+				70BCD5BD2A921B41006A2068 /* Defaults */,
 			);
 			productName = DummyInn;
 			productReference = 708B27F62A90535600B283D8 /* DummyInn.app */;
@@ -161,6 +195,7 @@
 			mainGroup = 708B27ED2A90535600B283D8;
 			packageReferences = (
 				708B28152A90541500B283D8 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				70BCD5BC2A921B41006A2068 /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = 708B27F72A90535600B283D8 /* Products */;
 			projectDirPath = "";
@@ -189,12 +224,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				708B28122A9053EC00B283D8 /* AboutView.swift in Sources */,
+				70A09D0B2A9196D90078C908 /* SettingsView.swift in Sources */,
 				708B281A2A9055E100B283D8 /* Bundle+.swift in Sources */,
 				708B27FA2A90535600B283D8 /* DummyInnApp.swift in Sources */,
+				70BCD5C02A921B74006A2068 /* Defaults+.swift in Sources */,
 				708B28142A9053F200B283D8 /* NSImage+.swift in Sources */,
 				708B28132A9053F000B283D8 /* Logger+.swift in Sources */,
+				70BCD5C32A921E30006A2068 /* GenerateSize.swift in Sources */,
+				70A09D0E2A91AAEE0078C908 /* SettingsAddSizeSheet.swift in Sources */,
 				708B280F2A9053C400B283D8 /* Constants.swift in Sources */,
 				708B28112A9053E900B283D8 /* ContentView.swift in Sources */,
+				70A09D102A91B3FD0078C908 /* Array+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +451,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		70BCD5BC2A921B41006A2068 /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -418,6 +466,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 708B28152A90541500B283D8 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		70BCD5BD2A921B41006A2068 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70BCD5BC2A921B41006A2068 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

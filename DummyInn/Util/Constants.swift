@@ -7,14 +7,11 @@
 
 import SwiftUI
 
-let presetSizes: [Int] = [
-    60,
-    80,
-    100,
-    150,
-    200,
-    300,
-    400,
+let defaultSizePresets: [GenerateSize] = [
+    .init(width: 100, height: 100),
+    .init(width: 200, height: 200),
+    .init(width: 300, height: 300),
+    .init(width: 400, height: 400),
 ]
 
 // Note:
