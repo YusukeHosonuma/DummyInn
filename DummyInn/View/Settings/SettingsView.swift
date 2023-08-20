@@ -24,7 +24,7 @@ struct SettingsView: View {
             // ...
             Table(sizePresets, selection: $selection) {
                 TableColumn("Sizes") { size in
-                    Text("\(size.width) x \(size.height)")
+                    Text("\(size.label)")
                 }
             }
 

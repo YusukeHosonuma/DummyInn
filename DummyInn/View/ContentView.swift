@@ -34,7 +34,7 @@ struct ContentView: View {
 
                 Picker("Presets:", selection: $selectedSize) {
                     ForEach(sizePresets, id: \.self) { size in
-                        Text("\(size.width) x \(size.height)")
+                        Text("\(size.label)")
                             .tag(size)
                     }
                 }
