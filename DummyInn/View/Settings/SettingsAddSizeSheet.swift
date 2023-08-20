@@ -9,9 +9,9 @@ import SwiftUI
 
 /// 設定画面：サイズ追加シート
 struct SettingsAddSizeSheet: View {
-    @Binding var sizes: [GenerateSize]
-
+    @Environment(Presets.self) private var presets
     @Environment(\.dismiss) private var dismiss
+
     @State private var width: Int = 50
     @State private var height: Int = 50
     @State private var isSquare: Bool = true
@@ -44,9 +44,7 @@ struct SettingsAddSizeSheet: View {
             // OK / Cancel
             HStack {
                 Button("OK") {
-                    sizes.append(.init(width: width, height: height))
-                    sizes.sort(by: { $0.width < $1.width })
-
+                    presets.add(size: GenerateSize(width: width, height: height))
                     dismiss()
                 }
                 Button("Cancel", role: .cancel) {
@@ -60,5 +58,6 @@ struct SettingsAddSizeSheet: View {
 }
 
 #Preview {
-    SettingsAddSizeSheet(sizes: .constant([]))
+    SettingsAddSizeSheet()
+        .environment(Presets())
 }

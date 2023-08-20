@@ -15,7 +15,8 @@ import UniformTypeIdentifiers
 private let loggerFile: Logger = .file
 
 struct ContentView: View {
-    @Default(.sizePresets) private var sizePresets
+    @Environment(Presets.self) private var presets
+
     @Default(.isPresentedTutorialPopover) private var isPresentedTutorialPopover
 
     @Environment(\.openWindow) private var openWindow
@@ -33,7 +34,7 @@ struct ContentView: View {
                 TextField("Height:", value: $height, format: .number)
 
                 Picker("Presets:", selection: $selectedSize) {
-                    ForEach(sizePresets, id: \.self) { size in
+                    ForEach(presets.sizes, id: \.self) { size in
                         Text("\(size.label)")
                             .tag(size)
                     }
@@ -157,4 +158,5 @@ private extension ContentView {
 
 #Preview {
     ContentView()
+        .environment(Presets())
 }
