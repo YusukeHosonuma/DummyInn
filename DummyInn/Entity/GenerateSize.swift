@@ -7,11 +7,15 @@
 
 import Defaults
 
-struct GenerateSize: Hashable, Identifiable, Codable, Defaults.Serializable {
+struct GenerateSize: Hashable, Identifiable, Comparable, Codable, Defaults.Serializable {
     var id: GenerateSize { self }
 
     var width: Int
     var height: Int
+
+    static func < (lhs: GenerateSize, rhs: GenerateSize) -> Bool {
+        lhs.width < rhs.width
+    }
 }
 
 extension GenerateSize {
@@ -19,3 +23,4 @@ extension GenerateSize {
         "\(width) x \(height)"
     }
 }
+

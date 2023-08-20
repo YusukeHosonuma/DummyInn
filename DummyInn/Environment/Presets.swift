@@ -7,32 +7,29 @@
 
 import SwiftUI
 import Defaults
+import Collections
 
 @Observable
 final class Presets {
     /// サイズ一覧
-    private(set) var sizes: [GenerateSize] {
+    private(set) var sizes: OrderedSet<GenerateSize> = .init(Defaults[.sizePresets]) {
         didSet {
-            Defaults[.sizePresets] = sizes
+            Defaults[.sizePresets] = .init(sizes)
         }
-    }
-
-    init() {
-        sizes = Defaults[.sizePresets]
     }
 
     func add(size: GenerateSize) {
         var newSizes = sizes
         newSizes.append(size)
-        newSizes.sort(by: { $0.width < $1.width })
+        newSizes.sort()
         sizes = newSizes
     }
 
-    func remove(sizes: Set<GenerateSize>) {
-        self.sizes.removeAll(sizes)
+    func remove(sizes elements: Set<GenerateSize>) {
+        sizes.removeAll(elements)
     }
 
     func reset() {
-        sizes = defaultSizePresets
+        sizes = .init(defaultSizePresets)
     }
 }
