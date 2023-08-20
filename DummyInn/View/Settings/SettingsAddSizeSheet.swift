@@ -25,6 +25,7 @@ struct SettingsAddSizeSheet: View {
                 TextField("Height:", value: $height, format: .number)
                 Toggle("Square", isOn: $isSquare)
             }
+            .padding()
             .onChange(of: width) { _, newValue in
                 if isSquare {
                     height = newValue
@@ -40,14 +41,11 @@ struct SettingsAddSizeSheet: View {
                     height = width
                 }
             }
-            .padding()
+            .onSubmit(decide)
 
             // OK / Cancel
             HStack {
-                Button("OK") {
-                    presets.add(size: GenerateSize(width: width, height: height))
-                    dismiss()
-                }
+                Button("OK", action: decide)
                 Button("Cancel", role: .cancel) {
                     dismiss()
                 }
@@ -55,6 +53,13 @@ struct SettingsAddSizeSheet: View {
         }
         .padding()
         .frame(width: 200)
+    }
+
+    // MARK: Event
+
+    func decide() {
+        presets.add(size: GenerateSize(width: width, height: height))
+        dismiss()
     }
 }
 
