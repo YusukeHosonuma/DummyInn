@@ -16,9 +16,9 @@ private let loggerFile: Logger = .file
 
 struct ContentView: View {
     @Default(.sizePresets) private var sizePresets
-    @Environment(\.openWindow) private var openWindow
+    @Default(.isPresentedTutorialPopover) private var isPresentedTutorialPopover
 
-    @AppStorage("isPresentedPopover") private var isPresentedPopover: Bool = true
+    @Environment(\.openWindow) private var openWindow
 
     @State private var width: Int = 200
     @State private var height: Int = 200
@@ -34,7 +34,7 @@ struct ContentView: View {
 
                 Picker("Presets:", selection: $selectedSize) {
                     ForEach(sizePresets, id: \.self) { size in
-                        Text("\(size.width) x \(size.height)")
+                        Text("\(size.label)")
                             .tag(size)
                     }
                 }
@@ -46,8 +46,8 @@ struct ContentView: View {
 
             // プレビュー
             preview()
-                .popover(isPresented: $isPresentedPopover, attachmentAnchor: .point(.bottom), arrowEdge: .bottom) {
-                    Text("ドラッグ＆ドロップで保存できます")
+                .popover(isPresented: $isPresentedTutorialPopover, attachmentAnchor: .point(.bottom), arrowEdge: .bottom) {
+                    Text("Drag and drop to save")
                         .padding()
                 }
                 .onDrag {
@@ -85,18 +85,16 @@ struct ContentView: View {
                 }
 
             // カラーパレット
-            VStack {
+            Grid {
                 ForEach(presetColors.chunks(ofCount: 5), id: \.self) { row in
-                    HStack {
+                    GridRow {
                         ForEach(row, id: \.self) { color in
-                            VStack {
-                                color.fill
-                                    .frame(width: 30, height: 30)
-                                    .border(color.border)
-                                    .onTapGesture {
-                                        selectedColor = color
-                                    }
-                            }
+                            color.fill
+                                .frame(width: 30, height: 30)
+                                .border(color.border)
+                                .onTapGesture {
+                                    selectedColor = color
+                                }
                         }
                     }
                 }
@@ -119,7 +117,7 @@ struct ContentView: View {
                     Divider()
 
                     Button("Quit") {
-                        NSApplication.shared.terminate(nil)
+                        Application.quit()
                     }
                 } label: {
                     Label("Option", systemImage: "gearshape")

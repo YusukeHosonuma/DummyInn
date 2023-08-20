@@ -13,3 +13,9 @@ struct GenerateSize: Hashable, Identifiable, Codable, Defaults.Serializable {
     var width: Int
     var height: Int
 }
+
+extension GenerateSize {
+    var label: String {
+        "\(width) x \(height)"
+    }
+}
