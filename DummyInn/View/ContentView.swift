@@ -16,9 +16,9 @@ private let loggerFile: Logger = .file
 
 struct ContentView: View {
     @Default(.sizePresets) private var sizePresets
-    @Environment(\.openWindow) private var openWindow
+    @Default(.isPresentedTutorialPopover) private var isPresentedTutorialPopover
 
-    @AppStorage("isPresentedPopover") private var isPresentedPopover: Bool = true
+    @Environment(\.openWindow) private var openWindow
 
     @State private var width: Int = 200
     @State private var height: Int = 200
@@ -46,8 +46,8 @@ struct ContentView: View {
 
             // プレビュー
             preview()
-                .popover(isPresented: $isPresentedPopover, attachmentAnchor: .point(.bottom), arrowEdge: .bottom) {
-                    Text("ドラッグ＆ドロップで保存できます")
+                .popover(isPresented: $isPresentedTutorialPopover, attachmentAnchor: .point(.bottom), arrowEdge: .bottom) {
+                    Text("Drag and drop to save")
                         .padding()
                 }
                 .onDrag {

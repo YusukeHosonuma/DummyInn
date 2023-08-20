@@ -9,4 +9,5 @@ import Defaults
 
 extension Defaults.Keys {
     static let sizePresets = Key<[GenerateSize]>("sizePresets", default: defaultSizePresets)
+    static let isPresentedTutorialPopover = Key<Bool>("isPresentedTutorialPopover", default: true)
 }
