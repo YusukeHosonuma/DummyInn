@@ -5,12 +5,11 @@
 //  Created by Yusuke Hosonuma on 2023/08/20.
 //
 
-import Defaults
 import SwiftUI
 
 /// 設定画面
 struct SettingsView: View {
-    @Default(.sizePresets) private var sizePresets
+    @Environment(Presets.self) private var presets
 
     @State private var isPresentedSheet: Bool = false
     @State private var isPresentedConfirm = false
@@ -22,7 +21,7 @@ struct SettingsView: View {
             // - 100 x 100
             // - 200 x 200
             // ...
-            Table(sizePresets, selection: $selection) {
+            Table(presets.sizes, selection: $selection) {
                 TableColumn("Sizes") { size in
                     Text("\(size.label)")
                 }
@@ -34,7 +33,7 @@ struct SettingsView: View {
                     isPresentedSheet = true
                 }
                 Button("Remove", systemImage: "minus") {
-                    sizePresets.removeAll(selection)
+                    presets.remove(sizes: selection)
 
                     // Note: 明示的にクリアしないと残り続ける。（たぶんバグ）
                     selection = []
@@ -50,11 +49,11 @@ struct SettingsView: View {
             .labelStyle(.iconOnly)
         }
         .sheet(isPresented: $isPresentedSheet) {
-            SettingsAddSizeSheet(sizes: $sizePresets)
+            SettingsAddSizeSheet()
         }
         .confirmationDialog("Reset", isPresented: $isPresentedConfirm) {
             Button("Reset", role: .destructive) {
-                sizePresets = defaultSizePresets
+                presets.reset()
             }
         } message: {
             Text("Do you want to reset to default?")
@@ -65,4 +64,5 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
+        .environment(Presets())
 }

@@ -24,6 +24,7 @@
 		70BCD5C02A921B74006A2068 /* DefaultsKeys+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BCD5BF2A921B74006A2068 /* DefaultsKeys+.swift */; };
 		70BCD5C32A921E30006A2068 /* GenerateSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BCD5C22A921E30006A2068 /* GenerateSize.swift */; };
 		70BCD5C52A922CFF006A2068 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BCD5C42A922CFF006A2068 /* Application.swift */; };
+		70E8A7942A923D46005B0970 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E8A7932A923D46005B0970 /* Presets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		70BCD5BF2A921B74006A2068 /* DefaultsKeys+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DefaultsKeys+.swift"; sourceTree = "<group>"; };
 		70BCD5C22A921E30006A2068 /* GenerateSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateSize.swift; sourceTree = "<group>"; };
 		70BCD5C42A922CFF006A2068 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		70E8A7932A923D46005B0970 /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				708B280B2A90538A00B283D8 /* View */,
 				70BCD5C12A921E1A006A2068 /* Entity */,
 				708B28082A90536D00B283D8 /* Extension */,
+				70E8A7922A923D33005B0970 /* Environment */,
 				708B28102A9053CB00B283D8 /* Util */,
 				708B27FF2A90535900B283D8 /* Preview Content */,
 				708B27F92A90535600B283D8 /* DummyInnApp.swift */,
@@ -146,6 +149,14 @@
 				70BCD5C22A921E30006A2068 /* GenerateSize.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		70E8A7922A923D33005B0970 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				70E8A7932A923D46005B0970 /* Presets.swift */,
+			);
+			path = Environment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +247,7 @@
 				70BCD5C32A921E30006A2068 /* GenerateSize.swift in Sources */,
 				70BCD5C52A922CFF006A2068 /* Application.swift in Sources */,
 				70A09D0E2A91AAEE0078C908 /* SettingsAddSizeSheet.swift in Sources */,
+				70E8A7942A923D46005B0970 /* Presets.swift in Sources */,
 				708B280F2A9053C400B283D8 /* Constants.swift in Sources */,
 				708B28112A9053E900B283D8 /* ContentView.swift in Sources */,
 				70A09D102A91B3FD0078C908 /* Array+.swift in Sources */,
