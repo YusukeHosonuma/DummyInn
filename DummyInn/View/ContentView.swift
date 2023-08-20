@@ -85,18 +85,16 @@ struct ContentView: View {
                 }
 
             // カラーパレット
-            VStack {
+            Grid {
                 ForEach(presetColors.chunks(ofCount: 5), id: \.self) { row in
-                    HStack {
+                    GridRow {
                         ForEach(row, id: \.self) { color in
-                            VStack {
-                                color.fill
-                                    .frame(width: 30, height: 30)
-                                    .border(color.border)
-                                    .onTapGesture {
-                                        selectedColor = color
-                                    }
-                            }
+                            color.fill
+                                .frame(width: 30, height: 30)
+                                .border(color.border)
+                                .onTapGesture {
+                                    selectedColor = color
+                                }
                         }
                     }
                 }
