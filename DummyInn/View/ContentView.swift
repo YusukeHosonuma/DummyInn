@@ -119,7 +119,7 @@ struct ContentView: View {
                     Divider()
 
                     Button("Quit") {
-                        NSApplication.shared.terminate(nil)
+                        Application.quit()
                     }
                 } label: {
                     Label("Option", systemImage: "gearshape")
