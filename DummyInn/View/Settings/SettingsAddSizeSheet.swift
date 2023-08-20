@@ -9,8 +9,9 @@ import SwiftUI
 
 /// 設定画面：サイズ追加シート
 struct SettingsAddSizeSheet: View {
-    @Environment(Presets.self) private var presets
     @Environment(\.dismiss) private var dismiss
+
+    private var presets = Presets.shared
 
     @State private var width: Int = 50
     @State private var height: Int = 50
@@ -59,5 +60,4 @@ struct SettingsAddSizeSheet: View {
 
 #Preview {
     SettingsAddSizeSheet()
-        .environment(Presets())
 }
