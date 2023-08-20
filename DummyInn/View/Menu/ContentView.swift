@@ -7,24 +7,28 @@
 
 import Algorithms
 import Defaults
-import Foundation
-import OSLog
 import SwiftUI
 import UniformTypeIdentifiers
 
-private let loggerFile: Logger = .file
-
+// メニューバーのルート
 struct ContentView: View {
-    @Environment(Presets.self) private var presets
+    @Environment(\.openWindow) private var openWindow
 
     @Default(.isPresentedTutorialPopover) private var isPresentedTutorialPopover
 
-    @Environment(\.openWindow) private var openWindow
+    private var presets = Presets.shared
 
-    @State private var width: Int = 200
-    @State private var height: Int = 200
-    @State private var selectedSize: GenerateSize = .init(width: 200, height: 200) // 対応する値が無い場合がある（いつか直すかも）
+    @State private var width: Int
+    @State private var height: Int
+    @State private var selectedSize: GenerateSize
     @State private var selectedColor: ThemeColor = presetColors[0]
+
+    init() {
+        let size = Presets.shared.sizes.first ?? .init(width: 200, height: 200)
+        _width = .init(wrappedValue: size.width)
+        _height = .init(wrappedValue: size.height)
+        _selectedSize = .init(wrappedValue: size)
+    }
 
     var body: some View {
         VStack(spacing: 16) {
@@ -53,36 +57,17 @@ struct ContentView: View {
                 }
                 .onDrag {
                     // ref: https://stackoverflow.com/a/75425040
+                    let fileName = "\(width)x\(height).png"
+                    let fileURL = FileManager.default.homeDirectoryForCurrentUser.appending(component: fileName)
 
-                    let fileURL = FileManager.default.homeDirectoryForCurrentUser.appending(component: "\(width)x\(height).png")
-                    loggerFile.info("Output path: \(fileURL)")
-
-                    let itemProvider = NSItemProvider(item: fileURL as NSSecureCoding, typeIdentifier: UTType.fileURL.identifier)
-
-                    // 0. ImageRender を用意
                     let render = ImageRenderer(content: output())
                     render.isOpaque = true
 
-                    // 1. NSImage を取得
-                    guard let image = render.nsImage else {
-                        loggerFile.error("Failed to render NSImage")
-                        return itemProvider
-                    }
+                    // Note:
+                    // ファイル書き込みに失敗しても何もしない。（OSによってドラッグアイコンが禁止マークになる）
+                    try? render.writeAsPNG(to: fileURL, size: .init(width: width, height: height))
 
-                    // 2. .png を作成
-                    guard let png = image.pngData(size: .init(width: width, height: height)) else {
-                        loggerFile.error("Failed to create .png")
-                        return itemProvider
-                    }
-
-                    // 3. ファイルへ書き込み
-                    do {
-                        try png.write(to: fileURL)
-                    } catch {
-                        loggerFile.error("Failed to write: \(fileURL)")
-                    }
-
-                    return itemProvider
+                    return NSItemProvider(item: fileURL as NSSecureCoding, typeIdentifier: UTType.fileURL.identifier)
                 }
 
             // カラーパレット
@@ -131,9 +116,7 @@ struct ContentView: View {
         }
         .padding()
     }
-}
 
-private extension ContentView {
     func preview() -> some View {
         placeholder()
             .aspectRatio(CGFloat(width) / CGFloat(height), contentMode: .fit)
@@ -149,7 +132,7 @@ private extension ContentView {
         selectedColor.fill
             .border(selectedColor.border, width: 2)
             .overlay {
-                Text("\(self.width) x \(self.height)")
+                Text("\(width) x \(height)")
                     .lineLimit(1)
                     .foregroundStyle(.white)
             }
@@ -158,5 +141,4 @@ private extension ContentView {
 
 #Preview {
     ContentView()
-        .environment(Presets())
 }

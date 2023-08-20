@@ -11,6 +11,10 @@ import SwiftUI
 
 @Observable
 final class Presets {
+    static let shared: Presets = .init()
+
+    private init() {}
+
     /// サイズ一覧
     private(set) var sizes: OrderedSet<GenerateSize> = .init(Defaults[.sizePresets]) {
         didSet {

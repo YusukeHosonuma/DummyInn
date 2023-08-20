@@ -9,7 +9,7 @@ import SwiftUI
 
 /// 設定画面
 struct SettingsView: View {
-    @Environment(Presets.self) private var presets
+    private var presets = Presets.shared
 
     @State private var isPresentedSheet: Bool = false
     @State private var isPresentedConfirm = false
@@ -64,5 +64,4 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
-        .environment(Presets())
 }
