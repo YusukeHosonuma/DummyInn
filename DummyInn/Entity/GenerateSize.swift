@@ -23,4 +23,3 @@ extension GenerateSize {
         "\(width) x \(height)"
     }
 }
-
