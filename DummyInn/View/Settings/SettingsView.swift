@@ -22,9 +22,7 @@ struct SettingsView: View {
             // - 200 x 200
             // ...
             Table(presets.sizes, selection: $selection) {
-                TableColumn("Sizes") { size in
-                    Text("\(size.label)")
-                }
+                TableColumn("Size", value: \.label)
             }
 
             // + / - / Reset...

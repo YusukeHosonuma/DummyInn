@@ -9,6 +9,7 @@ import Algorithms
 import Defaults
 import SwiftUI
 import UniformTypeIdentifiers
+import OSLog
 
 // メニューバーのルート
 struct ContentView: View {
@@ -22,6 +23,7 @@ struct ContentView: View {
     @State private var height: Int
     @State private var selectedSize: GenerateSize
     @State private var selectedColor: ThemeColor = presetColors[0]
+    @State private var isPresentedFileExporter: Bool = false
 
     init() {
         let size = Presets.shared.sizes.first ?? .init(width: 200, height: 200)
@@ -88,6 +90,10 @@ struct ContentView: View {
 
             // フッター
             HStack {
+                Button("Save") {
+                    isPresentedFileExporter = true
+                }
+
                 Spacer()
 
                 // ⚙️
@@ -115,6 +121,27 @@ struct ContentView: View {
             }
         }
         .padding()
+        // FIXME: macOS 14 beta 5 において、ディレクトリ変更時にダイアログが消え去る問題がある。
+        .fileExporter(
+            isPresented: $isPresentedFileExporter, 
+            document: imageDocument,
+            contentType: .png,
+            defaultFilename: "\(width)x\(height).png",
+            onCompletion: { result in
+                switch result {
+                case let .success(url):
+                    Logger.file.info("Success to write from fileExporter: \(url)")
+                case let .failure(error):
+                    Logger.file.info("Failed to write from fileExporter: \(error.localizedDescription)")
+                }
+            }
+        )
+    }
+
+    var imageDocument: ImageDocument {
+        let render = ImageRenderer(content: output())
+        render.isOpaque = true
+        return ImageDocument(image: render.nsImage, size: .init(width: width, height: height))
     }
 
     func preview() -> some View {
