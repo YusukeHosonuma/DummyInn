@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		702557802A9309E600387406 /* ImageDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7025577F2A9309E600387406 /* ImageDocument.swift */; };
 		704D3AF32A93A1B500B32E30 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 704D3AF22A93A1B500B32E30 /* Localizable.xcstrings */; };
+		704D3AF52A93AE8F00B32E30 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704D3AF42A93AE8F00B32E30 /* SettingsWindow.swift */; };
+		704D3AF72A93B03100B32E30 /* SettingsTabAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704D3AF62A93B03100B32E30 /* SettingsTabAppearance.swift */; };
+		704D3AF92A93B6E200B32E30 /* PreferredColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704D3AF82A93B6E200B32E30 /* PreferredColorScheme.swift */; };
 		708B27FA2A90535600B283D8 /* DummyInnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708B27F92A90535600B283D8 /* DummyInnApp.swift */; };
 		708B27FE2A90535900B283D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 708B27FD2A90535900B283D8 /* Assets.xcassets */; };
 		708B28012A90535900B283D8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 708B28002A90535900B283D8 /* Preview Assets.xcassets */; };
@@ -19,7 +22,7 @@
 		708B28142A9053F200B283D8 /* NSImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708B28092A90537500B283D8 /* NSImage+.swift */; };
 		708B28172A90541500B283D8 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 708B28162A90541500B283D8 /* Algorithms */; };
 		708B281A2A9055E100B283D8 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708B28192A9055E100B283D8 /* Bundle+.swift */; };
-		70A09D0B2A9196D90078C908 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A09D0A2A9196D90078C908 /* SettingsView.swift */; };
+		70A09D0B2A9196D90078C908 /* SettingsTabGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A09D0A2A9196D90078C908 /* SettingsTabGeneral.swift */; };
 		70A09D0E2A91AAEE0078C908 /* SettingsAddSizeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A09D0D2A91AAEE0078C908 /* SettingsAddSizeSheet.swift */; };
 		70A09D102A91B3FD0078C908 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A09D0F2A91B3FD0078C908 /* Array+.swift */; };
 		70BCD5BE2A921B41006A2068 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 70BCD5BD2A921B41006A2068 /* Defaults */; };
@@ -39,6 +42,9 @@
 /* Begin PBXFileReference section */
 		7025577F2A9309E600387406 /* ImageDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDocument.swift; sourceTree = "<group>"; };
 		704D3AF22A93A1B500B32E30 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		704D3AF42A93AE8F00B32E30 /* SettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
+		704D3AF62A93B03100B32E30 /* SettingsTabAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabAppearance.swift; sourceTree = "<group>"; };
+		704D3AF82A93B6E200B32E30 /* PreferredColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredColorScheme.swift; sourceTree = "<group>"; };
 		708B27F62A90535600B283D8 /* DummyInn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DummyInn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		708B27F92A90535600B283D8 /* DummyInnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyInnApp.swift; sourceTree = "<group>"; };
 		708B27FD2A90535900B283D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,7 +57,7 @@
 		708B280E2A9053C400B283D8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		708B28182A9054D300B283D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		708B28192A9055E100B283D8 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
-		70A09D0A2A9196D90078C908 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		70A09D0A2A9196D90078C908 /* SettingsTabGeneral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabGeneral.swift; sourceTree = "<group>"; };
 		70A09D0D2A91AAEE0078C908 /* SettingsAddSizeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAddSizeSheet.swift; sourceTree = "<group>"; };
 		70A09D0F2A91B3FD0078C908 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		70BCD5BF2A921B74006A2068 /* DefaultsKeys+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DefaultsKeys+.swift"; sourceTree = "<group>"; };
@@ -161,7 +167,9 @@
 		70A09D0C2A91AAC50078C908 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				70A09D0A2A9196D90078C908 /* SettingsView.swift */,
+				704D3AF42A93AE8F00B32E30 /* SettingsWindow.swift */,
+				704D3AF62A93B03100B32E30 /* SettingsTabAppearance.swift */,
+				70A09D0A2A9196D90078C908 /* SettingsTabGeneral.swift */,
 				70A09D0D2A91AAEE0078C908 /* SettingsAddSizeSheet.swift */,
 			);
 			path = Settings;
@@ -171,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				70BCD5C22A921E30006A2068 /* GenerateSize.swift */,
+				704D3AF82A93B6E200B32E30 /* PreferredColorScheme.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -277,7 +286,7 @@
 			files = (
 				70E8A7A32A925E9F005B0970 /* ImageRenderer+.swift in Sources */,
 				708B28122A9053EC00B283D8 /* AboutView.swift in Sources */,
-				70A09D0B2A9196D90078C908 /* SettingsView.swift in Sources */,
+				70A09D0B2A9196D90078C908 /* SettingsTabGeneral.swift in Sources */,
 				70E8A79D2A9250CF005B0970 /* OrderedSet+.swift in Sources */,
 				708B281A2A9055E100B283D8 /* Bundle+.swift in Sources */,
 				708B27FA2A90535600B283D8 /* DummyInnApp.swift in Sources */,
@@ -291,8 +300,11 @@
 				70A09D0E2A91AAEE0078C908 /* SettingsAddSizeSheet.swift in Sources */,
 				70E8A7942A923D46005B0970 /* Presets.swift in Sources */,
 				708B280F2A9053C400B283D8 /* Constants.swift in Sources */,
+				704D3AF72A93B03100B32E30 /* SettingsTabAppearance.swift in Sources */,
+				704D3AF52A93AE8F00B32E30 /* SettingsWindow.swift in Sources */,
 				70BEC2E22A9325E200F89DEA /* ImageSizeForm.swift in Sources */,
 				708B28112A9053E900B283D8 /* ContentView.swift in Sources */,
+				704D3AF92A93B6E200B32E30 /* PreferredColorScheme.swift in Sources */,
 				70A09D102A91B3FD0078C908 /* Array+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
