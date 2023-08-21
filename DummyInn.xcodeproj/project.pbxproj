@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		702557802A9309E600387406 /* ImageDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7025577F2A9309E600387406 /* ImageDocument.swift */; };
 		708B27FA2A90535600B283D8 /* DummyInnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708B27F92A90535600B283D8 /* DummyInnApp.swift */; };
 		708B27FE2A90535900B283D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 708B27FD2A90535900B283D8 /* Assets.xcassets */; };
 		708B28012A90535900B283D8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 708B28002A90535900B283D8 /* Preview Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7025577F2A9309E600387406 /* ImageDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDocument.swift; sourceTree = "<group>"; };
 		708B27F62A90535600B283D8 /* DummyInn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DummyInn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		708B27F92A90535600B283D8 /* DummyInnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyInnApp.swift; sourceTree = "<group>"; };
 		708B27FD2A90535900B283D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				70BCD5C42A922CFF006A2068 /* Application.swift */,
 				708B280E2A9053C400B283D8 /* Constants.swift */,
 				70E8A7A02A925E67005B0970 /* RuntimeError.swift */,
+				7025577F2A9309E600387406 /* ImageDocument.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				708B27FA2A90535600B283D8 /* DummyInnApp.swift in Sources */,
 				70E8A7A12A925E67005B0970 /* RuntimeError.swift in Sources */,
 				70BCD5C02A921B74006A2068 /* DefaultsKeys+.swift in Sources */,
+				702557802A9309E600387406 /* ImageDocument.swift in Sources */,
 				708B28142A9053F200B283D8 /* NSImage+.swift in Sources */,
 				708B28132A9053F000B283D8 /* Logger+.swift in Sources */,
 				70BCD5C32A921E30006A2068 /* GenerateSize.swift in Sources */,
