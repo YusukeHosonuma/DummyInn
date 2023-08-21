@@ -22,11 +22,11 @@ struct ImageDocument: FileDocument {
         self.size = size ?? .zero
     }
 
-    init(configuration: ReadConfiguration) throws {
+    init(configuration _: ReadConfiguration) throws {
         throw RuntimeError()
     }
 
-    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+    func fileWrapper(configuration _: WriteConfiguration) throws -> FileWrapper {
         guard let png = image.pngData(size: size) else { throw RuntimeError() }
         return FileWrapper(regularFileWithContents: png)
     }

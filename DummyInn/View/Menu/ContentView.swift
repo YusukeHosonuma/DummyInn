@@ -7,9 +7,9 @@
 
 import Algorithms
 import Defaults
+import OSLog
 import SwiftUI
 import UniformTypeIdentifiers
-import OSLog
 
 // メニューバーのルート
 struct ContentView: View {
@@ -19,6 +19,8 @@ struct ContentView: View {
 
     private var presets = Presets.shared
 
+    private var isDisplaySaveButton: Bool
+
     @State private var width: Int
     @State private var height: Int
     @State private var isSquare = true
@@ -26,7 +28,9 @@ struct ContentView: View {
     @State private var selectedColor: ThemeColor = presetColors[0]
     @State private var isPresentedFileExporter: Bool = false
 
-    init() {
+    init(isDisplaySaveButton: Bool) {
+        self.isDisplaySaveButton = isDisplaySaveButton
+
         let size = Presets.shared.sizes.first ?? .init(width: 200, height: 200)
         _width = .init(wrappedValue: size.width)
         _height = .init(wrappedValue: size.height)
@@ -35,31 +39,75 @@ struct ContentView: View {
 
     var body: some View {
         VStack(spacing: 16) {
-            // フォーム
-            Form {
-                Section {
-                    ImageSizeForm(
-                        width: $width,
-                        height: $height,
-                        isSquare: $isSquare
-                    )
+            ViewThatFits(in: .horizontal) {
+                HStack {
+                    mainPanel()
+                        .frame(maxWidth: .infinity)
+                    VStack {
+                        formPanel()
+                        Spacer()
+                        footer()
+                    }
+                    .frame(maxWidth: 180)
                 }
+                VStack {
+                    formPanel()
+                    mainPanel()
+                    footer()
+                }
+            }
+        }
+        .padding()
+        .fileExporter(
+            isPresented: $isPresentedFileExporter,
+            document: imageDocument,
+            contentType: .png,
+            defaultFilename: "\(width)x\(height).png",
+            onCompletion: { result in
+                switch result {
+                case let .success(url):
+                    Logger.file.info("Success to write from fileExporter: \(url)")
+                case let .failure(error):
+                    Logger.file.info("Failed to write from fileExporter: \(error.localizedDescription)")
+                }
+            }
+        )
+    }
 
-                Section {
-                    Picker("Presets:", selection: $selectedSize) {
-                        ForEach(presets.sizes, id: \.self) { size in
-                            Text("\(size.label)")
-                                .tag(size)
-                        }
+    var imageDocument: ImageDocument {
+        let render = ImageRenderer(content: output())
+        render.isOpaque = true
+        return ImageDocument(image: render.nsImage, size: .init(width: width, height: height))
+    }
+
+    func formPanel() -> some View {
+        Form {
+            Section {
+                ImageSizeForm(
+                    width: $width,
+                    height: $height,
+                    isSquare: $isSquare
+                )
+            }
+
+            Section {
+                Picker("Presets:", selection: $selectedSize) {
+                    ForEach(presets.sizes, id: \.self) { size in
+                        Text("\(size.label)")
+                            .tag(size)
                     }
                 }
-                .padding(.top)
             }
-            .onChange(of: selectedSize, initial: true) { _, newValue in
-                width = newValue.width
-                height = newValue.height
-            }
+            .padding(.top)
+        }
+        .onChange(of: selectedSize, initial: true) { _, newValue in
+            width = newValue.width
+            height = newValue.height
+        }
+    }
 
+    func mainPanel() -> some View {
+        VStack(spacing: 16) {
             // プレビュー
             preview()
                 .popover(isPresented: $isPresentedTutorialPopover, attachmentAnchor: .point(.bottom), arrowEdge: .bottom) {
@@ -96,61 +144,43 @@ struct ContentView: View {
                     }
                 }
             }
-
-            // フッター
-            HStack {
-                Button("Save") {
-                    isPresentedFileExporter = true
-                }
-
-                Spacer()
-
-                // ⚙️
-                Menu {
-                    Button("About") {
-                        openWindow(id: "about")
-                    }
-                    SettingsLink {
-                        Text("Settings...")
-                    }
-
-                    // --------
-                    Divider()
-
-                    Button("Quit") {
-                        Application.quit()
-                    }
-                } label: {
-                    Label("Option", systemImage: "gearshape")
-                        .labelStyle(.iconOnly)
-                }
-                // .menuStyle(.borderlessButton) // 非推奨だが使わない方法が分からない...
-                .menuIndicator(.hidden)
-                .fixedSize()
-            }
         }
         .padding()
-        // FIXME: macOS 14 beta 5 において、ディレクトリ変更時にダイアログが消え去る問題がある。
-        .fileExporter(
-            isPresented: $isPresentedFileExporter, 
-            document: imageDocument,
-            contentType: .png,
-            defaultFilename: "\(width)x\(height).png",
-            onCompletion: { result in
-                switch result {
-                case let .success(url):
-                    Logger.file.info("Success to write from fileExporter: \(url)")
-                case let .failure(error):
-                    Logger.file.info("Failed to write from fileExporter: \(error.localizedDescription)")
-                }
-            }
-        )
     }
 
-    var imageDocument: ImageDocument {
-        let render = ImageRenderer(content: output())
-        render.isOpaque = true
-        return ImageDocument(image: render.nsImage, size: .init(width: width, height: height))
+    func footer() -> some View {
+        HStack {
+            if isDisplaySaveButton {
+                Button("Save...") {
+                    isPresentedFileExporter = true
+                }
+            }
+
+            Spacer()
+
+            // ⚙️
+            Menu {
+                Button("About") {
+                    openWindow(id: "about")
+                }
+                SettingsLink {
+                    Text("Settings...")
+                }
+
+                // --------
+                Divider()
+
+                Button("Quit") {
+                    Application.quit()
+                }
+            } label: {
+                Label("Option", systemImage: "gearshape")
+                    .labelStyle(.iconOnly)
+            }
+            // .menuStyle(.borderlessButton) // 非推奨だが使わない方法が分からない...
+            .menuIndicator(.hidden)
+            .fixedSize()
+        }
     }
 
     func preview() -> some View {
@@ -175,6 +205,12 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
+#Preview("Main") {
+    ContentView(isDisplaySaveButton: true)
+        .frame(width: 430, height: 320)
+}
+
+#Preview("MenuBarExtra") {
+    ContentView(isDisplaySaveButton: false)
+        .frame(width: 220)
 }

@@ -10,9 +10,19 @@ import SwiftUI
 @main
 struct DummyInnApp: App {
     var body: some Scene {
-        // メニューアプリ
+        // Main
+        WindowGroup {
+            ContentView(isDisplaySaveButton: true)
+                .frame(width: 430, height: 320)
+        }
+        .windowResizability(.contentSize)
+
+        // Menu
         MenuBarExtra("DummyInn", systemImage: "square.inset.filled") {
-            ContentView()
+            // Note:
+            // macOS 14 beta 5 において、ファイル保存ダイアログでディレクトリ変更時にダイアログが消え去る問題があるため、
+            // メニューバー版では保存ボタンを表示しないようにしている。
+            ContentView(isDisplaySaveButton: false)
                 .frame(width: 220)
         }
         .menuBarExtraStyle(.window)
@@ -24,7 +34,7 @@ struct DummyInnApp: App {
         }
         .windowResizability(.contentSize)
 
-        // 設定
+        // Settings
         Settings {
             SettingsView()
                 .frame(minWidth: 300, minHeight: 200)

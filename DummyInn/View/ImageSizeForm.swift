@@ -1,5 +1,5 @@
 //
-//  SizeForm.swift
+//  ImageSizeForm.swift
 //  DummyInn
 //
 //  Created by Yusuke Hosonuma on 2023/08/21.
