@@ -93,7 +93,7 @@ struct ContentView: View {
             Section {
                 Picker("Presets:", selection: $selectedSize) {
                     ForEach(presets.sizes, id: \.self) { size in
-                        Text("\(size.label)")
+                        Text(size.label)
                             .tag(size)
                     }
                 }

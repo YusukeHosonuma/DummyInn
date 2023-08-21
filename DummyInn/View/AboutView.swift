@@ -17,7 +17,7 @@ struct AboutView: View {
                 .scaledToFit()
                 .frame(width: 60, height: 60)
 
-            Text("\(Bundle.main.appName)")
+            Text(Bundle.main.appName)
                 .font(.headline)
                 .textSelection(.enabled)
                 .padding(4)
