@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-/// 設定画面
-struct SettingsView: View {
+/// 設定ウィンドウ：一般タブ
+struct SettingsTabGeneral: View {
     private var presets = Presets.shared
 
-    @State private var isPresentedSheet: Bool = false
+    @State private var isPresentedSheet = false
     @State private var isPresentedConfirm = false
     @State private var selection: Set<GenerateSize> = []
 
@@ -61,5 +61,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    SettingsTabGeneral()
 }
