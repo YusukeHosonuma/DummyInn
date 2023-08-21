@@ -19,33 +19,19 @@ struct SettingsAddSizeSheet: View {
 
     var body: some View {
         VStack {
-            // フォーム
             Form {
-                TextField("Width:", value: $width, format: .number)
-                TextField("Height:", value: $height, format: .number)
-                Toggle("Square", isOn: $isSquare)
+                ImageSizeForm(
+                    width: $width,
+                    height: $height,
+                    isSquare: $isSquare
+                )
             }
             .padding()
-            .onChange(of: width) { _, newValue in
-                if isSquare {
-                    height = newValue
-                }
-            }
-            .onChange(of: height) { _, newValue in
-                if isSquare {
-                    width = newValue
-                }
-            }
-            .onChange(of: isSquare) { _, newValue in
-                if newValue {
-                    height = width
-                }
-            }
             .onSubmit(decide)
 
-            // OK / Cancel
+            // Add / Cancel
             HStack {
-                Button("OK", action: decide)
+                Button("Add", action: decide)
                 Button("Cancel", role: .cancel) {
                     dismiss()
                 }

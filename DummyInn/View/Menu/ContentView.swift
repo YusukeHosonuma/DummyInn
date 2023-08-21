@@ -21,6 +21,7 @@ struct ContentView: View {
 
     @State private var width: Int
     @State private var height: Int
+    @State private var isSquare = true
     @State private var selectedSize: GenerateSize
     @State private var selectedColor: ThemeColor = presetColors[0]
     @State private var isPresentedFileExporter: Bool = false
@@ -36,15 +37,23 @@ struct ContentView: View {
         VStack(spacing: 16) {
             // フォーム
             Form {
-                TextField("Width:", value: $width, format: .number)
-                TextField("Height:", value: $height, format: .number)
+                Section {
+                    ImageSizeForm(
+                        width: $width,
+                        height: $height,
+                        isSquare: $isSquare
+                    )
+                }
 
-                Picker("Presets:", selection: $selectedSize) {
-                    ForEach(presets.sizes, id: \.self) { size in
-                        Text("\(size.label)")
-                            .tag(size)
+                Section {
+                    Picker("Presets:", selection: $selectedSize) {
+                        ForEach(presets.sizes, id: \.self) { size in
+                            Text("\(size.label)")
+                                .tag(size)
+                        }
                     }
                 }
+                .padding(.top)
             }
             .onChange(of: selectedSize, initial: true) { _, newValue in
                 width = newValue.width
