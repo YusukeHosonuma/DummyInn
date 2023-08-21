@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		702557802A9309E600387406 /* ImageDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7025577F2A9309E600387406 /* ImageDocument.swift */; };
+		704D3AF32A93A1B500B32E30 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 704D3AF22A93A1B500B32E30 /* Localizable.xcstrings */; };
 		708B27FA2A90535600B283D8 /* DummyInnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708B27F92A90535600B283D8 /* DummyInnApp.swift */; };
 		708B27FE2A90535900B283D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 708B27FD2A90535900B283D8 /* Assets.xcassets */; };
 		708B28012A90535900B283D8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 708B28002A90535900B283D8 /* Preview Assets.xcassets */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		7025577F2A9309E600387406 /* ImageDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDocument.swift; sourceTree = "<group>"; };
+		704D3AF22A93A1B500B32E30 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		708B27F62A90535600B283D8 /* DummyInn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DummyInn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		708B27F92A90535600B283D8 /* DummyInnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyInnApp.swift; sourceTree = "<group>"; };
 		708B27FD2A90535900B283D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				708B28182A9054D300B283D8 /* Info.plist */,
 				708B27FD2A90535900B283D8 /* Assets.xcassets */,
 				708B28022A90535900B283D8 /* DummyInn.entitlements */,
+				704D3AF22A93A1B500B32E30 /* Localizable.xcstrings */,
 			);
 			path = DummyInn;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 708B27ED2A90535600B283D8;
 			packageReferences = (
@@ -260,6 +264,7 @@
 			files = (
 				708B28012A90535900B283D8 /* Preview Assets.xcassets in Resources */,
 				708B27FE2A90535900B283D8 /* Assets.xcassets in Resources */,
+				704D3AF32A93A1B500B32E30 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
